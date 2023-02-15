@@ -37,9 +37,9 @@
     $chambre2 = new Chambre(1,$chambreDouble,200.104,$hotel1);
 	
     $client1 = new Client("Georges");
-    $client2 = new Client("Georges");
+    $client2 = new Client("Polo");
+
     
-	// $equipeJuvi = new Equipe("Juventus",$italy,1990);
 		
 	// $_listJoueurAffichage = [];
 	
@@ -47,14 +47,14 @@
 	// $_listJoueurAffichage [] = $georges;
 	
 	
-	// $saisonMU01012023 = new Saison($CR7, $equipeAlNasser,'01-01-2023'); 
+	 $reservation15022023 = new Reservation($hotel, $chambre1,'15-02-2023','16-02-2023'); 
+     $reservation15022023 = new Reservation($hotel, $chambre1,'16-02-2023','17-02-2023'); 
 	
 
-	// echo "<div> On liste les équipes d'un PAYS</div>";
-	// echo "<div class='container-flex-row'>";
-	// 	$liban->getListEquipeAffichage();
-	// 	$france->getListEquipeAffichage();
-	// echo "</div>";
+	 echo "<div> Hotel Details</div>";
+	 echo "<div class='container-flex-row'>";
+	 	$hotel->getAffichage();
+	 echo "</div>";
 
     // echo "<div> On liste les joueurs de chaque équipe (remarquez que des joueurs apparaissent dans plusieurs équipes à 
     //             des années différentes</div>";

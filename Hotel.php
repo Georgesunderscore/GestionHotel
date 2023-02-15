@@ -185,4 +185,9 @@ class Hotel
         $this->_listDesReservation [] = $r;
         return $this->_listDesReservation;
     }
+
+    //getAffichage
+    public function getAffichage(){
+        echo"";
+    }
 }
