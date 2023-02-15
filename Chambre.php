@@ -13,11 +13,13 @@ class Chambre
 
 	
 
-	public function __construct($numero , $typeChambre ,$prix )
+	public function __construct($numero , $typeChambre ,$prix , $hotel )
 	{
 		$this->_numero = $numero;
         $this->_typeChambre = $typeChambre;
 		$this->_prix = $prix;
+		$this->_hotel = $hotel;
+		
 		$this->_hotel->ajoutListChambre($this);
 		
 		
@@ -109,6 +111,26 @@ class Chambre
 	public function setPrix($prix)
 	{
 		$this->_prix = $prix;
+		return $this;
+	}
+
+	/**
+	 * Get the value of _hotel
+	 */ 
+	public function getHotel()
+	{
+		return $this->_hotel;
+	}
+
+	/**
+	 * Set the value of _hotel
+	 *
+	 * @return  self
+	 */ 
+	public function setHotel($hotel)
+	{
+		$this->_hotel = $hotel;
+
 		return $this;
 	}
 }
