@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css">
-	<title>Gestion-Foot</title>
+	<title>Gestion-Hotel</title>
 </head>
 
 <body>
@@ -16,8 +16,6 @@
 
 	</p>
 	<h2>Résultat </h2>
-
-
 
 	<?php
 
@@ -34,27 +32,21 @@
 	$hotel1 = new Hotel('Hilton****Strasbourg' , "10 route de la gare " , 30);
     
     $chambre1 = new Chambre(1,$chambreSimple,100.52,$hotel1);
-    $chambre2 = new Chambre(1,$chambreDouble,200.104,$hotel1);
+    $chambre2 = new Chambre(2,$chambreDouble,200.104,$hotel1);
 	
     $client1 = new Client("Georges");
     $client2 = new Client("Polo");
 
-    
-		
-	// $_listJoueurAffichage = [];
+    $reservation15022023 = new Reservation( $chambre1,$client1,'15-02-2023','16-02-2023'); 
 	
-    // $georges = new Joueur("georges", "kayal", "29-02-1986",$nationLB);
-	// $_listJoueurAffichage [] = $georges;
+	echo "<div> Hotel Details</div>";
+	echo "<div class='container-flex-row'>";
+	$hotel1->getAffichage();
+	echo "</div>";
+	echo "<br>";
+	$hotel1->getAffichageReservations();
 	
 	
-	 $reservation15022023 = new Reservation($hotel, $chambre1,'15-02-2023','16-02-2023'); 
-     $reservation15022023 = new Reservation($hotel, $chambre1,'16-02-2023','17-02-2023'); 
-	
-
-	 echo "<div> Hotel Details</div>";
-	 echo "<div class='container-flex-row'>";
-	 	$hotel->getAffichage();
-	 echo "</div>";
 
     // echo "<div> On liste les joueurs de chaque équipe (remarquez que des joueurs apparaissent dans plusieurs équipes à 
     //             des années différentes</div>";

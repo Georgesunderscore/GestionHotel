@@ -6,9 +6,9 @@ class Hotel
 	// déclaration table intermediaire
 	private String $_nom;
     private String $_address;
-    private String $_nombreChambres;
-    private String $_nombreCReserver;
-    private String $_nombreCDisponible;
+    private int $_nombreChambres;
+    private int $_nombreCReserver;
+    private int $_nombreCDisponible;
     //relation
     private array $_listDesChambres;
 
@@ -19,11 +19,15 @@ class Hotel
 
 	
 
-	public function __construct($nom)
+	public function __construct($nom,$address,$nombreChambres)
 	{
 		$this->_nom = $nom;
+		$this->_address = $address;
+        $this->_nombreChambres = $nombreChambres;
+        $this->_nombreCDisponible = $nombreChambres;
+        $this->_nombreCReserver =  0;
 	}
-
+    
 	/**
 	 * Get the value of _nom
 	 */ 
@@ -188,6 +192,42 @@ class Hotel
 
     //getAffichage
     public function getAffichage(){
-        echo"";
+    echo "<div class='box boxBlue'>  $this";
+        echo "<div class='boxChild boxBlue'>";
+        echo "<p>".  $this->_address."</p>";
+        echo "<p> Nombre de Chambres ".  $this->_nombreChambres."</p>";
+        echo "<p> Nombre de Chambres Réserver ".  $this->getNombreCReserver()."</p>";
+        echo "<p> Nombre de Chambres Disponible".  $this->getNombreCDisponible()."</p>";
+        echo "</div>";
+    echo "</div>";
     }
+    //getAffichage
+    public function getAffichageReservations(){
+        echo "<div class='box boxBlue' Reservation de l'hotel >  $this";
+            echo "<div class='boxChild boxBlue'>";
+            echo "<p>".  count($this->_listDesReservation) ." Reservations </p>";
+            foreach($this->_listDesReservation as $reservation ){
+                		echo "<p>".  $reservation->getClient() . '-' . $reservation->getChambre()
+                        // .'-' . $reservation->getDateDebut()->format('Y-m-d H:i:s')
+                        // . 'au' . $reservation->getDateFin()->format('Y-m-d H:i:s') .
+                        .'-' . $reservation->getDateDebut()->format('Y-m-d')
+                        . 'au' . $reservation->getDateFin()->format('Y-m-d') .
+                        "</p>";
+                	}
+            echo "</div>";
+        echo "</div>";
+        }
+    
+	// public function getListEquipeJoueurAffichage(){
+	// 	echo "<div class='box boxBlue'>  $this";
+	// 	echo "<div class='boxChild boxBlue'>";
+	// 	if(!empty($this->_listSaison) )
+	// 	foreach($this->_listSaison as $saison ){
+	// 		echo "<p>".  $saison->getEquipe() . ' ' . $saison->getEquipe()->getYear() ."</p>";
+	// 	}
+	// 	echo "</div>";
+	// 	echo "</div>";
+	// }
+
+
 }

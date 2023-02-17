@@ -1,0 +1,50 @@
+* {
+	padding: 10px;
+	margin: 10px;
+}
+
+p {
+	padding: 2px;
+	margin: 2px;
+
+}
+
+div {
+    
+	text-shadow: 1px 1px #ff0000;
+    text-align: left;
+}
+h2 {
+    text-align: left;
+}
+
+.box{
+    
+    
+    background-color: #e9b8b8;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+
+.boxChild{
+    
+    
+    background-color: #ca7b7b;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+}
+.boxWhite{
+    background-color: #d0d3da;
+}
+
+.container-flex-row {
+    display: flex;
+	flex-flow: row wrap;
+	margin: 10px;
+	text-align: center;
+    min-width: 290px;
+}

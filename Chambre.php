@@ -6,7 +6,7 @@ class Chambre
 	// déclaration table intermediaire
 	private int $_numero;
     private TypeChambre $_typeChambre;
-	private bool $_status;
+	private bool $_statusDisponible=true;
 	private float $_prix;
 
 	private Hotel $_hotel;
@@ -49,7 +49,7 @@ class Chambre
 
 	public function __toString()
 	{
-		$ecrire = $this->getNumero();
+		$ecrire = $this->getNumero() ;
 		echo "<br>";
 		return $ecrire;
 	}
@@ -78,9 +78,9 @@ class Chambre
 	/**
 	 * Get the value of _status
 	 */ 
-	public function getStatus()
+	public function getStatusDisponible()
 	{
-		return $this->_status;
+		return $this->_statusDisponible;
 	}
 
 	/**
@@ -88,9 +88,9 @@ class Chambre
 	 *
 	 * @return  self
 	 */ 
-	public function setStatus($status)
+	public function setStatusDisponible($statusDisponible)
 	{
-		$this->_status = $status;
+		$this->_statusDisponible = $statusDisponible;
 
 		return $this;
 	}
