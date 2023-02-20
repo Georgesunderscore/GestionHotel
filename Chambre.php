@@ -50,7 +50,6 @@ class Chambre
 	public function __toString()
 	{
 		$ecrire = $this->getNumero() ;
-		echo "<br>";
 		return $ecrire;
 	}
 

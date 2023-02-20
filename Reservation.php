@@ -23,12 +23,15 @@ class Reservation
             $this->_client = $client;
             $this->_dateDebut = new DateTime($dateDebut);
             $this->_dateFin = new DateTime($dateFin);
+            $this->nombreJours = $this->_dateDebut->diff($this->_dateFin)->format("%d");
+            
             $this->_chambre->getHotel()->ajoutListReservation($this); 
             $this->_client->ajoutListReservation($this); 
             $hotel =$chambre->getHotel(); 
-            $chambre->getHotel()->setNombreCDisponible($hotel->getNombreCDisponible() - 1);
-            $chambre->getHotel()->setNombreCReserver($hotel->getNombreCReserver() + 1);
+            $hotel->setNombreCDisponible($hotel->getNombreCDisponible() - 1);
+            $hotel->setNombreCReserver($hotel->getNombreCReserver() + 1);
 			$chambre->setStatusDisponible(false);
+            //echo"$this->nombreJours";
             echo "Reservation Confirmer";
         }
 		else{
@@ -136,6 +139,28 @@ class Reservation
     public function setClient($client)
     {
         $this->_client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of _nombreJours
+     */ 
+    public function getNombreJours()
+    {
+        //$this->nombreJours = $this->_dateDebut->diff($this->_dateFin)->format("%d");
+        return $this->_nombreJours;
+            
+    }
+
+    /**
+     * Set the value of _nombreJours
+     *
+     * @return  self
+     */ 
+    public function setNombreJours($nombreJours)
+    {
+        $this->_nombreJours = $nombreJours;
 
         return $this;
     }

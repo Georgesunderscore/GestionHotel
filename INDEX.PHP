@@ -25,11 +25,12 @@
 	});
 
     
-	$chambreSimple = new TypeChambre("Simple");
-    $chambreDouble = new TypeChambre("Double");
+	$chambreSimple = new TypeChambre("Simple","non");
+    $chambreDouble = new TypeChambre("Double","oui");
 	//($numero , $typeChambre ,$prix )
     
 	$hotel1 = new Hotel('Hilton****Strasbourg' , "10 route de la gare " , 30);
+	$hotel2 = new Hotel('Regent****Paris' , "address" , 50);
     
     $chambre1 = new Chambre(1,$chambreSimple,100.52,$hotel1);
     $chambre2 = new Chambre(2,$chambreDouble,200.104,$hotel1);
@@ -40,14 +41,20 @@
     $reservation15022023 = new Reservation( $chambre1,$client1,'15-02-2023','16-02-2023'); 
 	
 	echo "<div> Hotel Details</div>";
-	echo "<div class='container-flex-row'>";
+	
 	$hotel1->getAffichage();
-	echo "</div>";
+	
 	echo "<br>";
 	$hotel1->getAffichageReservations();
 	
+	$hotel2->getAffichage();
+	$hotel2->getAffichageReservations();	
 	
-
+	
+	$client1->getAffichageReservations();	
+	
+	$hotel1->getAffichageChambreStatus();
+	
     // echo "<div> On liste les joueurs de chaque équipe (remarquez que des joueurs apparaissent dans plusieurs équipes à 
     //             des années différentes</div>";
 

@@ -38,7 +38,6 @@ class Client
 	public function __toString()
 	{
 		$ecrire = $this->getNom();
-		echo "<br>";
 		return $ecrire;
 	}
 
@@ -70,4 +69,37 @@ class Client
 
 		return $this;
 	}
+	//getAffichage
+    public function getAffichageReservations(){
+        echo "<div class='container-flex-row'>";
+            echo "<div class='box'>" .' Reservation de  '.  "$this";
+                echo "<div class='boxChild'>";
+                if(!empty($this->_listDesReservation)){
+                    echo "<p class='boxGreen'>".  count($this->_listDesReservation) ." Reservations </p>";
+                    foreach($this->_listDesReservation as $reservation ){
+						$x = "- (". ($reservation->getChambre()->getTypeChambre()=='Simple') ? "<span>1 Lit</span>":"<span>2 Lits</span>" ;
+                         
+						echo "<p>".  $reservation->getChambre()->getHotel() . ' / Chambre ' . $reservation->getChambre()
+                                //.' - (' . $reservation->getChambre()->getTypeChambre() . '  ' 
+                                .' - (' . $x . '  ' 
+								.' - ' . $reservation->getChambre()->getPrix(). ' € ' 
+								.' - Wifi ' . $reservation->getChambre()->getTypeChambre()->getWifi(). ')' 
+                                // .'-' . $reservation->getDateDebut()->format('Y-m-d H:i:s')
+                                // . 'au' . $reservation->getDateFin()->format('Y-m-d H:i:s') .
+                                .' - du ' . $reservation->getDateDebut()->format('d-m-Y') 
+                                . ' au ' . $reservation->getDateFin()->format('d-m-Y') 
+                               // . ' Nbr des Jours ' . $reservation->getNombreJours() 
+                                . "</p>";
+                            }
+                }
+                else{
+                    echo "<p class='boxGreen'> Aucune Réservations! </p>";
+                    
+
+                }
+                echo "</div>";
+            echo "</div>";
+        echo "</div>";
+        }
+    
 }

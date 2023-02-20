@@ -51,7 +51,6 @@ class Hotel
 	public function __toString()
 	{
 		$ecrire = $this->getNom();
-		echo "<br>";
 		return $ecrire;
 	}
 
@@ -189,45 +188,90 @@ class Hotel
         $this->_listDesReservation [] = $r;
         return $this->_listDesReservation;
     }
-
+    
     //getAffichage
     public function getAffichage(){
+    echo "<div class='container-flex-row'>";
     echo "<div class='box boxBlue'>  $this";
-        echo "<div class='boxChild boxBlue'>";
-        echo "<p>".  $this->_address."</p>";
-        echo "<p> Nombre de Chambres ".  $this->_nombreChambres."</p>";
-        echo "<p> Nombre de Chambres Réserver ".  $this->getNombreCReserver()."</p>";
-        echo "<p> Nombre de Chambres Disponible".  $this->getNombreCDisponible()."</p>";
-        echo "</div>";
-    echo "</div>";
-    }
-    //getAffichage
-    public function getAffichageReservations(){
-        echo "<div class='box boxBlue' Reservation de l'hotel >  $this";
-            echo "<div class='boxChild boxBlue'>";
-            echo "<p>".  count($this->_listDesReservation) ." Reservations </p>";
-            foreach($this->_listDesReservation as $reservation ){
-                		echo "<p>".  $reservation->getClient() . '-' . $reservation->getChambre()
-                        // .'-' . $reservation->getDateDebut()->format('Y-m-d H:i:s')
-                        // . 'au' . $reservation->getDateFin()->format('Y-m-d H:i:s') .
-                        .'-' . $reservation->getDateDebut()->format('Y-m-d')
-                        . 'au' . $reservation->getDateFin()->format('Y-m-d') .
-                        "</p>";
-                	}
+    echo "<div class='boxChild boxBlue'>";
+            echo "<p>".  $this->_address."</p>";
+            echo "<p> Nombre de Chambres ".  $this->_nombreChambres."</p>";
+            echo "<p> Nombre de Chambres Réserver ".  $this->getNombreCReserver()."</p>";
+            echo "<p> Nombre de Chambres Disponible".  $this->getNombreCDisponible()."</p>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+        }
+
+        //getAffichage
+        public function getAffichageReservations(){
+        echo "<div class='container-flex-row'>";
+            echo "<div class='box'>" .' Reservation de l\'hotel '.  "$this";
+                echo "<div class='boxChild'>";
+                if(!empty($this->_listDesReservation)){
+                    echo "<p class='boxGreen'>".  count($this->_listDesReservation) ." Reservations </p>";
+                    foreach($this->_listDesReservation as $reservation ){
+                                echo "<p>".  $reservation->getClient() . ' - Chambre ' . $reservation->getChambre()
+                                // .'-' . $reservation->getDateDebut()->format('Y-m-d H:i:s')
+                                // . 'au' . $reservation->getDateFin()->format('Y-m-d H:i:s') .
+                                .' - ' . $reservation->getDateDebut()->format('d-m-Y') 
+                                . ' au ' . $reservation->getDateFin()->format('d-m-Y') 
+                               // . ' Nbr des Jours ' . $reservation->getNombreJours() 
+                                . "</p>";
+                            }
+                }
+                else{
+                    echo "<p class='boxGreen'> Aucune Réservations! </p>";
+                }
+                echo "</div>";
             echo "</div>";
         echo "</div>";
-        }
+    }
+    public function hanna(){
+        return;
+    }
     
-	// public function getListEquipeJoueurAffichage(){
-	// 	echo "<div class='box boxBlue'>  $this";
-	// 	echo "<div class='boxChild boxBlue'>";
-	// 	if(!empty($this->_listSaison) )
-	// 	foreach($this->_listSaison as $saison ){
-	// 		echo "<p>".  $saison->getEquipe() . ' ' . $saison->getEquipe()->getYear() ."</p>";
-	// 	}
-	// 	echo "</div>";
-	// 	echo "</div>";
-	// }
 
+    //getAffichage
+    public function getAffichageChambreStatus(){
+        echo "<div class='container-flex-row'>";
+            echo "<div class='box'>" .' Status des chambres de l\'hotel '.  "$this";
+                echo "<div class='boxChild'>";
+            if(!empty($this->_listDesReservation)){
+                //tabel header 
+                echo"<table>";
+                echo"<thead>";
+                echo"<tr>";
+                            echo"<th >CHAMBRE</th>";
+                            echo"<th >PRIX</th>";
+                            echo"<th >WIFI</th>";
+                            echo"<th >ETAT</th>";
+                        echo"</tr>";
+                    echo"</thead>";
+                    echo"<tbody>";
 
+                    foreach($this->_listDesChambres as $chambre ){
+                        $status = ($chambre->getStatusDisponible())?"Dispo":"Reservée";
+                        $classColor = ($chambre->getStatusDisponible())? "boxGreen":"boxRed";
+                        echo"<tr>";
+                            echo"<td>". $chambre  . "</td>";
+                            echo"<td>". $chambre->getPrix()  . "</td>";
+                            echo"<td>". $chambre->getTypeChambre()->getWifi()  . "</td>";
+                            echo"<td class=".$classColor .">".   $status. "</td>";
+                        echo"</tr>";
+                        
+                        "</p>";
+                    }
+                    echo"</tbody>";
+                echo"</table>";
+                    }
+            else{
+                echo "<p class='boxGreen'> Aucune Réservations Tous les chambres sont disponible! </p>";
+                
+                
+            }
+                echo "</div>";
+            echo "</div>";
+        echo "</div>";
+    }
 }

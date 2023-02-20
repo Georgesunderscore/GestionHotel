@@ -11,7 +11,7 @@ p {
 
 div {
     
-	text-shadow: 1px 1px #ff0000;
+	text-shadow: 0px 0px #ff0000;
     text-align: left;
 }
 h2 {
@@ -21,7 +21,7 @@ h2 {
 .box{
     
     
-    background-color: #e9b8b8;
+    background-color: #eccccc;
     border-radius: 10px;
     text-align: center;
 }
@@ -31,7 +31,7 @@ h2 {
 .boxChild{
     
     
-    background-color: #ca7b7b;
+    background-color: #fdf7f7;
     border-radius: 10px;
     display: flex;
     flex-flow: column;
@@ -40,6 +40,13 @@ h2 {
 .boxWhite{
     background-color: #d0d3da;
 }
+.boxGreen{
+    background-color: #26c26c;
+}
+.boxRed{
+    background-color: #e61818;
+}
+
 
 .container-flex-row {
     display: flex;

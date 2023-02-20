@@ -5,12 +5,15 @@ class TypeChambre
 {
 	// chambre simple ou double 2 lit 
 	private String $_type;
+	private String $_wifi="non";
+
 
 	
 
-	public function __construct($type)
+	public function __construct($type,$wifi)
 	{
 		$this->_type = $type;
+		$this->_wifi = $wifi;
 	}
 
 
@@ -37,8 +40,27 @@ class TypeChambre
 	public function __toString()
 	{
 		$ecrire = $this->getType();
-		echo "<br>";
 		return $ecrire;
 	}
 
+
+	/**
+	 * Get the value of _wifi
+	 */ 
+	public function getWifi()
+	{
+		return $this->_wifi;
+	}
+
+	/**
+	 * Set the value of _wifi
+	 *
+	 * @return  self
+	 */ 
+	public function setWifi($wifi)
+	{
+		$this->_wifi = $wifi;
+
+		return $this;
+	}
 }
