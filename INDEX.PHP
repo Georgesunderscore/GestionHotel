@@ -34,17 +34,18 @@
     
     $chambre1 = new Chambre(1,$chambreSimple,100.52,$hotel1);
     $chambre2 = new Chambre(2,$chambreDouble,200.104,$hotel1);
+    $chambre3 = new Chambre(3,$chambreDouble,200.104,$hotel1);
 	
     $client1 = new Client("Georges");
     $client2 = new Client("Polo");
 
     $reservation15022023 = new Reservation( $chambre1,$client1,'15-02-2023','16-02-2023'); 
+    $reservation16022023 = new Reservation( $chambre2,$client1,'16-02-2023','17-02-2023'); 
 	
 	echo "<div> Hotel Details</div>";
 	
 	$hotel1->getAffichage();
 	
-	echo "<br>";
 	$hotel1->getAffichageReservations();
 	
 	$hotel2->getAffichage();

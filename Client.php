@@ -5,6 +5,7 @@ class Client
 {
 	// déclaration table intermediaire
 	private String $_nom;
+	private String $_prenom;
 
 	private array $_listDesReservation;
 
@@ -71,14 +72,16 @@ class Client
 	}
 	//getAffichage
     public function getAffichageReservations(){
+		$total =0;
         echo "<div class='container-flex-row'>";
             echo "<div class='box'>" .' Reservation de  '.  "$this";
                 echo "<div class='boxChild'>";
                 if(!empty($this->_listDesReservation)){
                     echo "<p class='boxGreen'>".  count($this->_listDesReservation) ." Reservations </p>";
                     foreach($this->_listDesReservation as $reservation ){
+
 						$x = "- (". ($reservation->getChambre()->getTypeChambre()=='Simple') ? "<span>1 Lit</span>":"<span>2 Lits</span>" ;
-                         
+                        $total = $total +  $reservation->getNombreJours() * $reservation->getChambre()->getPrix() ; 
 						echo "<p>".  $reservation->getChambre()->getHotel() . ' / Chambre ' . $reservation->getChambre()
                                 //.' - (' . $reservation->getChambre()->getTypeChambre() . '  ' 
                                 .' - (' . $x . '  ' 
@@ -97,6 +100,10 @@ class Client
                     
 
                 }
+					echo "<div class='box'>Total : ";
+					echo "<span > " .  $total . " € </span>"; 
+
+					echo "</div>";
                 echo "</div>";
             echo "</div>";
         echo "</div>";

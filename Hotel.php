@@ -186,6 +186,7 @@ class Hotel
     public function ajoutListReservation(Reservation $r)
     {   
         $this->_listDesReservation [] = $r;
+        echo"ajout a la list des reservations";
         return $this->_listDesReservation;
     }
     
@@ -226,9 +227,6 @@ class Hotel
                 echo "</div>";
             echo "</div>";
         echo "</div>";
-    }
-    public function hanna(){
-        return;
     }
     
 

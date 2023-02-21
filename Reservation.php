@@ -5,12 +5,10 @@ class Reservation
 {
 	// déclaration table intermediaire
 	   
-	private Hotel $_hotel;
     private Chambre $_chambre;
     private Client $_client;    
     private DateTime $_dateDebut;
     private DateTime $_dateFin;
-    private int $_nombreJours;
     
     //optionelle
     // private float $_discountRate;
@@ -23,7 +21,6 @@ class Reservation
             $this->_client = $client;
             $this->_dateDebut = new DateTime($dateDebut);
             $this->_dateFin = new DateTime($dateFin);
-            $this->nombreJours = $this->_dateDebut->diff($this->_dateFin)->format("%d");
             
             $this->_chambre->getHotel()->ajoutListReservation($this); 
             $this->_client->ajoutListReservation($this); 
@@ -41,26 +38,6 @@ class Reservation
 			
 		}  
         
-	}
-
-	/**
-	 * Get the value of _hotel
-	 */ 
-	public function getHotel()
-	{
-		return $this->_hotel;
-	}
-
-	/**
-	 * Set the value of _hotel
-	 *
-	 * @return  self
-	 */ 
-	public function setHotel($hotel)
-	{
-		$this->_hotel = $hotel;
-
-		return $this;
 	}
 
     /**
@@ -148,20 +125,10 @@ class Reservation
      */ 
     public function getNombreJours()
     {
-        //$this->nombreJours = $this->_dateDebut->diff($this->_dateFin)->format("%d");
-        return $this->_nombreJours;
+        $x = $this->_dateDebut->diff($this->_dateFin)->format("%a");
+        return $x;
             
     }
 
-    /**
-     * Set the value of _nombreJours
-     *
-     * @return  self
-     */ 
-    public function setNombreJours($nombreJours)
-    {
-        $this->_nombreJours = $nombreJours;
-
-        return $this;
-    }
+  
 }
