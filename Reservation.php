@@ -25,8 +25,6 @@ class Reservation
             $this->_chambre->getHotel()->ajoutListReservation($this); 
             $this->_client->ajoutListReservation($this); 
             $hotel =$chambre->getHotel(); 
-            $hotel->setNombreCDisponible($hotel->getNombreCDisponible() - 1);
-            $hotel->setNombreCReserver($hotel->getNombreCReserver() + 1);
 			$chambre->setStatusDisponible(false);
             //echo"$this->nombreJours";
             echo "Reservation Confirmer";

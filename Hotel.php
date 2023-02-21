@@ -6,9 +6,6 @@ class Hotel
 	// déclaration table intermediaire
 	private String $_nom;
     private String $_address;
-    private int $_nombreChambres;
-    private int $_nombreCReserver;
-    private int $_nombreCDisponible;
     //relation
     private array $_listDesChambres;
 
@@ -24,8 +21,10 @@ class Hotel
 		$this->_nom = $nom;
 		$this->_address = $address;
         $this->_nombreChambres = $nombreChambres;
-        $this->_nombreCDisponible = $nombreChambres;
-        $this->_nombreCReserver =  0;
+        $this->_listDesReservation = []; 
+        $this->_listDesChambres = []; 
+         
+        
 	}
     
 	/**
@@ -75,44 +74,16 @@ class Hotel
         return $this;
     }
 
-    /**
-     * Get the value of _nombreChambres
-     */ 
-    public function getNombreChambres()
-    {
-        return $this->_nombreChambres;
-    }
-
-    /**
-     * Set the value of _nombreChambres
-     *
-     * @return  self
-     */ 
-    public function setNombreChambres($_nombreChambres)
-    {
-        $this->_nombreChambres = $_nombreChambres;
-
-        return $this;
-    }
+    
 
     /**
      * Get the value of _nombreCReserver
      */ 
     public function getNombreCReserver()
     {
-        return $this->_nombreCReserver;
-    }
-
-    /**
-     * Set the value of _nombreCReserver
-     *
-     * @return  self
-     */ 
-    public function setNombreCReserver($_nombreCReserver)
-    {
-        $this->_nombreCReserver = $_nombreCReserver;
-
-        return $this;
+         
+        $nbReservations = count($this->_listDesReservation) ;
+        return $nbReservations;
     }
 
     /**
@@ -120,19 +91,9 @@ class Hotel
      */ 
     public function getNombreCDisponible()
     {
-        return $this->_nombreCDisponible;
-    }
-
-    /**
-     * Set the value of _nombreCDisponible
-     *
-     * @return  self
-     */ 
-    public function setNombreCDisponible($_nombreCDisponible)
-    {
-        $this->_nombreCDisponible = $_nombreCDisponible;
-
-        return $this;
+        $nbChambres = count($this->_listDesChambres);
+        $nbDispo = $nbChambres - count($this->_listDesReservation);
+        return $nbDispo;
     }
 
     /**
@@ -196,9 +157,9 @@ class Hotel
     echo "<div class='box boxBlue'>  $this";
     echo "<div class='boxChild boxBlue'>";
             echo "<p>".  $this->_address."</p>";
-            echo "<p> Nombre de Chambres ".  $this->_nombreChambres."</p>";
+            echo "<p> Nombre de Chambres ".  count($this->_listDesChambres)."</p>";
             echo "<p> Nombre de Chambres Réserver ".  $this->getNombreCReserver()."</p>";
-            echo "<p> Nombre de Chambres Disponible".  $this->getNombreCDisponible()."</p>";
+            echo "<p> Nombre de Chambres Disponible ".  $this->getNombreCDisponible()."</p>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
